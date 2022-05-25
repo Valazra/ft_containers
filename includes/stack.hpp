@@ -3,6 +3,10 @@
 
 namespace ft
 {
+	template <class T>
+	class stack
+	{
+	};
 }
 
 #endif

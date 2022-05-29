@@ -283,17 +283,17 @@ namespace ft
 	//operator<
 
 	template <class T, class Alloc>
-	bool operator>(vector<T, Alloc> const & lhs, vector<T, Alloc> const & rhs)
-	{
-		return (rhs < lhs);
-	}
-
-	template <class T, class Alloc>
 	bool operator<=(vector<T, Alloc> const & lhs, vector<T, Alloc> const & rhs)
 	{
 		return (!(rhs < lhs));
 	}
 	
+	template <class T, class Alloc>
+	bool operator>(vector<T, Alloc> const & lhs, vector<T, Alloc> const & rhs)
+	{
+		return (rhs < lhs);
+	}
+
 	template <class T, class Alloc>
 	bool operator>=(vector<T, Alloc> const & lhs, vector<T, Alloc> const & rhs)
 	{

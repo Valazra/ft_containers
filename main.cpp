@@ -22,13 +22,25 @@ int	main(void)
 	cons1.push_back(5);
 	cons1.push_back(10);
 	cons1.push_back(15);
-	cons1.push_back(15);
-	cons1.push_back(15);
 	print_datas_vector(cons1);
 
 	//copy constructor
 	ft::vector<int> cons2(cons1);
 	print_datas_vector(cons2);
+
+	//assignation
+	ft::vector<int> cons3;
+	cons3 = cons1;
+	print_datas_vector(cons3);
+
+	//constructor with 5 copies of default T
+	ft::vector<int> cons4 = ft::vector<int>(5);
+	print_datas_vector(cons4);
+
+	//constructor with 5 copies of 526
+	ft::vector<int> cons5 = ft::vector<int>(5, 526);
+	print_datas_vector(cons5);
+	
 	
 	return (0);
 }

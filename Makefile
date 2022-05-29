@@ -1,6 +1,6 @@
 NAME = containers
 
-COMPILER = c++
+COMPILER = clang++
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 

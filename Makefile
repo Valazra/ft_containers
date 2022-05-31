@@ -6,7 +6,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 
 INC_DIR = includes
 
-INCS = stack.hpp vector.hpp map.hpp
+INCS = stack.hpp vector.hpp map.hpp iterator_traits.hpp
 
 SRCS = main.cpp
 

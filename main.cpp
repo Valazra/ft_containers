@@ -1,6 +1,4 @@
 #include "includes/vector.hpp"
-#include "includes/stack.hpp"
-#include "includes/map.hpp"
 
 template < typename T >
 void print_datas_vector(ft::vector<T> const & vect)
@@ -16,6 +14,7 @@ int	main(void)
 {
 	std::cout << "***************************" << std::endl << std::endl;
 
+	std::cout << "-------------CONSTRUCTORS-------------" << std::endl << std::endl;
 	//default constructor
 	ft::vector<int> cons1;
 	print_datas_vector(cons1);
@@ -28,7 +27,7 @@ int	main(void)
 	ft::vector<int> cons2(cons1);
 	print_datas_vector(cons2);
 
-	//assignation
+	//constructor with assignation
 	ft::vector<int> cons3;
 	cons3 = cons1;
 	print_datas_vector(cons3);
@@ -41,6 +40,73 @@ int	main(void)
 	ft::vector<int> cons5 = ft::vector<int>(5, 526);
 	print_datas_vector(cons5);
 	
-	
+//	ft::vector<int> cons6 = ft::vector<int>(cons3.begin(), cons3.end());
+//	print_datas_vector(cons6);
+
+	//iterators
+	std::cout << "-------------ITERATORS-------------" << std::endl << std::endl;
+	ft::vector<int>::iterator it = cons1.begin();
+	std::cout << "it = " << *it << std::endl;
+	std::cout << "*++it = " << *++it << std::endl;
+	std::cout << "--+it = " << *--it << std::endl;
+	std::cout << "*(it + 2) = " << *(it + 2) << std::endl;
+	std::cout << std::endl << "******************************" << std::endl << std::endl;
+
+	//at
+	std::cout << "-------------AT-------------" << std::endl << std::endl;
+	try
+	{
+		std::cout << cons1.at(1) << std::endl;
+		std::cout << cons1.at(6) << std::endl;
+	}
+	catch (std::exception & e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << std::endl << "******************************" << std::endl << std::endl;
+
+	//assign
+	std::cout << "-------------ASSIGN-------------" << std::endl << std::endl;
+	print_datas_vector(cons3);
+	cons3.assign(5, 555);
+	print_datas_vector(cons3);
+	cons3.assign(1, 111);
+	print_datas_vector(cons3);
+
+	//insert
+	std::cout << "-------------INSERT-------------" << std::endl << std::endl;
+	cons5.pop_back();	
+	cons5.pop_back();	
+	cons5.pop_back();	
+	cons5.push_back(22);	
+	cons5.push_back(25);	
+	cons5.push_back(28);	
+	print_datas_vector(cons5);
+	cons5.insert(cons5.begin(), 12);
+	cons5.insert(cons5.end(), 13);
+	cons5.insert(cons5.begin() + 3, 2, 99);
+	print_datas_vector(cons5);
+
+//marche pas pour des vectors vides
+//	ft::vector<int> insert1;
+//	ft::vector<int> insert2;
+//	insert1.insert(insert1.begin(), 1);
+//	insert2.insert(insert2.end(), 1);
+//	print_datas_vector(insert1);
+//	print_datas_vector(insert2);
+
+	//erase
+	std::cout << "-------------ERASE-------------" << std::endl << std::endl;
+	cons1.push_back(20);	
+	print_datas_vector(cons1);
+	cons1.erase(cons1.begin());
+	print_datas_vector(cons1);
+	cons1.erase(cons1.begin() + 1, cons1.end() - 1);
+	print_datas_vector(cons1);
+
+	print_datas_vector(cons5);
+	cons5.erase(cons5.begin() + 2, cons5.end() - 2);
+	print_datas_vector(cons5);
+
 	return (0);
 }

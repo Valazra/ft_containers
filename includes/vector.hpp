@@ -121,13 +121,13 @@ namespace ft
 				return (_allocator.max_size());
 			}
 
-		/*	void resize(size_type n, value_type val = value_type())
+			void resize(size_type n, value_type val = value_type())
 			{
 				if (n < _size)
 					_size = n;
 				else
 					insert(end(), n - _size, val);
-			}*/
+			}
 
 			size_type capacity(void) const
 			{
@@ -366,7 +366,12 @@ namespace ft
 		return (!(lhs == rhs));
 	}
 
-	//operator<
+//a mettre avec les inputiterator
+/*	template <class T, class Alloc>
+	bool operator<(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs)
+	{
+		return (ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
+	}*/
 
 	template <class T, class Alloc>
 	bool operator<=(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs)

@@ -1,4 +1,4 @@
-NAME = containers
+NAME = stack
 
 COMPILER = clang++
 
@@ -6,9 +6,9 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 
 INC_DIR = includes
 
-INCS = stack.hpp vector.hpp map.hpp iterator_traits.hpp
+INCS = stack.hpp
 
-SRCS = main.cpp
+SRCS = main_stack.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 

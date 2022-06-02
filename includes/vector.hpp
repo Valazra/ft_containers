@@ -2,6 +2,8 @@
 # define VECTOR_HPP
 
 # include <iostream>
+# include "enable_if.hpp"
+# include "is_integral.hpp"
 
 namespace ft
 {
@@ -38,12 +40,25 @@ namespace ft
 				}
 			}
 	
-	/*	template <class InputIterator>
-			vector(InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type()) : _size(0), _capacity(0), _array(NULL),  _allocator(alloc)
+		template <class InputIterator>
+			vector(InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(), typename ft::enable_if<!ft::is_integral<InputIterator>::value, bool>::type =0) : _size(0), _capacity(0), _array(NULL),  _allocator(alloc)
 			{
-				(void)first;
-				(void)last;
-			}*/
+				size_type size = 0;
+				for (InputIterator it = first ; it != last ; it++)
+					size++;
+				_size = size;
+				_capacity = size;
+				if (size > 0)
+				{
+					_array = _allocator.allocate(_capacity);
+					pointer it2 = _array;
+					for ( ; first != last ; first++)
+					{
+						_allocator.construct(it2, *first);
+						it2++;
+					}
+				}
+			}
 
 			vector(const vector& x) : _size(x._size), _capacity(x._capacity), _array(NULL), _allocator(x._allocator)
 			{
@@ -207,7 +222,31 @@ namespace ft
 					return (_array[_size - 1]);
 			}
 
-	//template<InputIterator> assign
+			template<class InputIterator>
+			void assign(InputIterator first, InputIterator last, typename ft::enable_if<!ft::is_integral<InputIterator>::value, bool>::type = true)
+			{
+				clear();
+				size_type size = 0;
+				for (InputIterator it = first ; it != last ; it++)
+					size++;
+				_size = size;
+				if (_capacity < size)
+				{
+					_allocator.deallocate(_array, _capacity);
+					_capacity = size;
+					if (size > 0)
+						_array = _allocator.allocate(_capacity);
+					else
+						return ;
+				}
+				pointer it2 = _array;
+				while (first != last)
+				{
+					_allocator.construct(it2, *first);
+					first++;
+					it2++;
+				}
+			}
 
 			void assign(size_type n, const value_type& val)
 			{
@@ -271,7 +310,32 @@ namespace ft
 				}
 			}
 
-	//template <InputIterator> insert
+			template <class InputIterator>
+			void insert(iterator position, InputIterator first, InputIterator last, typename ft::enable_if<!ft::is_integral<InputIterator>::value, bool>::type = true)
+			{
+				if (first == last)
+					return ;
+				difference_type tmp = position - _array;
+				size_type size = 0;
+				for (InputIterator it = first ; it != last ; it++)
+					size++;
+				if (_size + size > _size * 2)
+					reserve(_size + size);
+				else if (_size + size > _capacity)
+					reserve(_size * 2);
+				for (pointer it2 = _array + _size + size - 1, ite = _array + tmp + size - 1 ;it2 != ite ; it2--)
+				{
+					_allocator.construct(it2, *(it2 - size));
+					_allocator.destroy(it2 - size);
+				}
+				_size += size;
+				while (size > 0)
+				{
+					last--;
+					_allocator.construct(_array + tmp + size - 1, *last);
+					size--;
+				}
+			}
 
 			iterator erase(iterator position)
 			{

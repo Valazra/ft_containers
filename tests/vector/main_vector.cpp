@@ -40,8 +40,9 @@ int	main(void)
 	ft::vector<int> cons5 = ft::vector<int>(5, 526);
 	print_datas_vector(cons5);
 	
-//	ft::vector<int> cons6 = ft::vector<int>(cons3.begin(), cons3.end());
-//	print_datas_vector(cons6);
+	//constructor with InputIterator
+	ft::vector<int> cons6 = ft::vector<int>(cons3.begin(), cons3.end());
+	print_datas_vector(cons6);
 
 	//iterators
 	std::cout << "-------------ITERATORS-------------" << std::endl << std::endl;
@@ -72,6 +73,8 @@ int	main(void)
 	print_datas_vector(cons3);
 	cons3.assign(1, 111);
 	print_datas_vector(cons3);
+	cons3.assign(cons1.begin(), cons1.end());
+	print_datas_vector(cons3);
 
 	//insert
 	std::cout << "-------------INSERT-------------" << std::endl << std::endl;
@@ -87,13 +90,10 @@ int	main(void)
 	cons5.insert(cons5.begin() + 3, 2, 99);
 	print_datas_vector(cons5);
 
-//marche pas pour des vectors vides
-//	ft::vector<int> insert1;
-//	ft::vector<int> insert2;
-//	insert1.insert(insert1.begin(), 1);
-//	insert2.insert(insert2.end(), 1);
-//	print_datas_vector(insert1);
-//	print_datas_vector(insert2);
+	ft::vector<int> insert1(10, 3528);
+	print_datas_vector(insert1);
+	cons5.insert(cons5.end(), insert1.begin(), insert1.end());
+	print_datas_vector(cons5);
 
 	//erase
 	std::cout << "-------------ERASE-------------" << std::endl << std::endl;

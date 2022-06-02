@@ -6,7 +6,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 
 INC_DIR = includes
 
-INCS = vector.hpp enable_if.hpp is_integral.hpp
+INCS = vector.hpp enable_if.hpp is_integral.hpp lexicographical_compare.hpp
 
 SRCS = main_vector.cpp
 

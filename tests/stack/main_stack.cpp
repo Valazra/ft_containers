@@ -50,8 +50,7 @@ int	main(void)
 		std::cout << "cons2 and cons3 are !=" << std::endl;
 	else
 		std::cout << "cons2 and cons3 are not !=" << std::endl;
-//a mettre avec les inputiterators
-/*	if (cons2 < cons3)
+	if (cons2 < cons3)
 		std::cout << "cons2 < cons3" << std::endl;
 	else
 		std::cout << "cons2 is not < cons3" << std::endl;
@@ -67,7 +66,7 @@ int	main(void)
 		std::cout << "cons2 >= cons3" << std::endl;
 	else
 		std::cout << "cons2 is not >= cons3" << std::endl;
-*/
+
 	std::cout << std::endl << "***************************" << std::endl << std::endl;
 
 	cons2.push(8);
@@ -77,7 +76,7 @@ int	main(void)
 		std::cout << "cons2 and cons3 are ==" << std::endl;
 	else
 		std::cout << "cons2 and cons3 are not ==" << std::endl;
-/*	if (cons2 < cons3)
+	if (cons2 < cons3)
 		std::cout << "cons2 < cons3" << std::endl;
 	else
 		std::cout << "cons2 is not < cons3" << std::endl;
@@ -93,7 +92,7 @@ int	main(void)
 		std::cout << "cons2 >= cons3" << std::endl;
 	else
 		std::cout << "cons2 is not >= cons3" << std::endl;
-*/
+
 
 	std::cout << std::endl << "***************************" << std::endl;
 }

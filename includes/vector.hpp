@@ -4,6 +4,7 @@
 # include <iostream>
 # include "enable_if.hpp"
 # include "is_integral.hpp"
+# include "lexicographical_compare.hpp"
 
 namespace ft
 {
@@ -430,12 +431,11 @@ namespace ft
 		return (!(lhs == rhs));
 	}
 
-//a mettre avec les inputiterator
-/*	template <class T, class Alloc>
+	template <class T, class Alloc>
 	bool operator<(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs)
 	{
-		return (ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end());
-	}*/
+		return (ft::lexicographical_compare(lhs.begin(), lhs.end(), rhs.begin(), rhs.end()));
+	}
 
 	template <class T, class Alloc>
 	bool operator<=(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs)

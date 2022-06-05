@@ -5,6 +5,7 @@
 # include "enable_if.hpp"
 # include "is_integral.hpp"
 # include "lexicographical_compare.hpp"
+# include "iterator.hpp"
 
 namespace ft
 {
@@ -14,18 +15,18 @@ namespace ft
 		public :
 
 //TYPEDEFS	
+			typedef T value_type; 
 			typedef Alloc allocator_type;
-			typedef const T* const_iterator;
+			typedef random_access_iterator<const value_type> const_iterator;
 	//		typedef typename allocator_type::const_pointer const_pointer;
 			typedef typename allocator_type::const_reference const_reference;
 	//		typedef ft::reverse_iterator<const_iterator> const_reverse_iterator;
 			typedef std::ptrdiff_t difference_type;
-			typedef T* iterator;
+			typedef random_access_iterator<value_type> iterator;
 			typedef typename allocator_type::pointer pointer;
 			typedef typename allocator_type::reference reference;
 	//		typedef typename ft::reverse_iterator<iterator> reverse_iterator;
 			typedef std::size_t size_type;
-			typedef T value_type; 
 
 			explicit vector(const allocator_type& alloc = allocator_type()) : _size(0), _capacity(0), _array(NULL), _allocator(alloc)
 			{
@@ -340,34 +341,25 @@ namespace ft
 
 			iterator erase(iterator position)
 			{
-				if (empty() || position == end())
-					return (end());
-				_allocator.destroy(position);
-				for (pointer it = position, ite = end() - 1 ; it != ite ; it++)
-				{
-					_allocator.construct(it, *(it + 1));
-					_allocator.destroy(it + 1);
-				}
-				_size--;
-				return (position);
+				return (erase(position, position + 1));
 			}
 
 			iterator erase(iterator first, iterator last)
 			{
-				if (empty() || first == last)
-					return (end());
-				size_type n = 0;
-				for (iterator it = first ; it != last ; it++)
-					n++;
-				for (pointer it = first ; it != last ; it++)
-					_allocator.destroy(it);
-				for (pointer it = first, ite = end() - n ; it != ite ; it++)
+				size_type i = last - first;
+				size_type j = first - _array;
+				if (i > 0)
 				{
-					_allocator.construct(it, *(it + n));
-					_allocator.destroy(it + n);
+					for ( ; j < _size - i ; j++)
+					{
+						_allocator.destroy(_array + j);
+						_allocator.construct (_array + j, _array[j + i]);
+					}
+					for ( ; j < _size ; j++)
+						_allocator.destroy(_array + j);
+					_size -= i;
 				}
-				_size -= n;
-				return (first);
+				return (iterator(first));
 			}
 
 			void swap (vector & src)

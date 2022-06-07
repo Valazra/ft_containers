@@ -3,7 +3,7 @@
 
 namespace ft
 {
-	template <bool B, class T = void>
+	template <bool Cond, class T = void>
 	struct enable_if
 	{
 	};

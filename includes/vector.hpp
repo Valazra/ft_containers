@@ -21,8 +21,8 @@ namespace ft
 			typedef std::ptrdiff_t difference_type;
 			typedef typename allocator_type::pointer pointer;
 			typedef typename allocator_type::reference reference;
-			typedef random_access_iterator<value_type> iterator;
-			typedef random_access_iterator<const value_type> const_iterator;
+			typedef ft::random_access_iterator<value_type> iterator;
+			typedef ft::random_access_iterator<const value_type> const_iterator;
 			typedef typename ft::reverse_iterator<iterator> reverse_iterator;
 			typedef ft::reverse_iterator<const_iterator> const_reverse_iterator;
 			typedef std::size_t size_type;
@@ -31,7 +31,7 @@ namespace ft
 			{
 			}
 		
-			explicit vector(size_type n, const value_type & val = value_type(), const allocator_type & alloc = allocator_type()) : _size(n), _capacity(n), _array(NULL), _allocator(alloc)
+			explicit vector(size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()) : _size(n), _capacity(n), _array(NULL), _allocator(alloc)
 			{
 				if (n > 0)
 				{
@@ -42,7 +42,7 @@ namespace ft
 			}
 	
 		template <class InputIterator>
-			vector(InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(), typename ft::enable_if<!ft::is_integral<InputIterator>::value, bool>::type =0) : _size(0), _capacity(0), _array(NULL),  _allocator(alloc)
+			vector(InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(), typename ft::enable_if<!ft::is_integral<InputIterator>::value, bool>::type = 0) : _size(0), _capacity(0), _array(NULL),  _allocator(alloc)
 			{
 				size_type size = 0;
 				for (InputIterator it = first ; it != last ; it++)
@@ -71,30 +71,30 @@ namespace ft
 				}
 			}
 
-			virtual ~vector(void)
+			~vector(void)
 			{
 				clear();
 				if (_capacity != 0)
 					_allocator.deallocate(_array, _capacity);
 			}
 
-			vector & operator=(vector const & src)
+			vector& operator=(const vector& x)
 			{
-				if (this != &src)
+				if (this != &x)
 				{
 					clear();
-					if (_capacity < src._size)
+					if (_capacity < x._size)
 					{
 						_allocator.deallocate(_array, _capacity);
-						_capacity = src._size;
+						_capacity = x._size;
 						if (_capacity > 0)
 							_array = _allocator.allocate(_capacity);
 						else
 							return (*this);
 					}
-					_size = src._size;
-					for(size_type i = 0 ; i < src._size ; i++)
-						_allocator.construct(_array + i, src._array[i]);
+					_size = x._size;
+					for(size_type i = 0 ; i < x._size ; i++)
+						_allocator.construct(_array + i, x._array[i]);
 				}
 				return (*this);
 			}
@@ -278,7 +278,7 @@ namespace ft
 					_allocator.construct(_array + i, val);
 			}
 	
-			void push_back(value_type const & val)
+			void push_back(const value_type& val)
 			{
 				if (_capacity == 0)
 					reserve(1);
@@ -373,17 +373,17 @@ namespace ft
 				return (iterator(first));
 			}
 
-			void swap (vector & src)
+			void swap (vector& x)
 			{
-				allocator_type tmp_all = src._allocator;
-				size_type tmp_size = src._size;
-				size_type tmp_cap = src._capacity;
-				pointer tmp_arr = src._arr;
+				allocator_type tmp_all = x._allocator;
+				size_type tmp_size = x._size;
+				size_type tmp_cap = x._capacity;
+				pointer tmp_arr = x._array;
 
-				src._allocator = _allocator;
-				src._size = _size;
-				src._capacity = _capacity;
-				src._array = _array;
+				x._allocator = _allocator;
+				x._size = _size;
+				x._capacity = _capacity;
+				x._array = _array;
 
 				_allocator = tmp_all;
 				_size = tmp_size;
@@ -459,9 +459,9 @@ namespace ft
 	}
 
 	template <class T, class Alloc>
-	void swap(const vector<T, Alloc>& lhs, const vector<T, Alloc>& rhs)
+	void swap(vector<T, Alloc>& x, vector<T, Alloc>& y)
 	{
-		lhs.swap(rhs);
+		x.swap(y);
 	}
 }
 

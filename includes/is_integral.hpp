@@ -9,7 +9,7 @@ namespace ft
 		static const T value = v;
 		typedef T value_type;
 		typedef integral_constant<T, v> type;
-		operator T()
+		const operator T()
 		{
 			return (v);
 		}
@@ -59,7 +59,7 @@ namespace ft
 	};
 
 	template <>
-	struct is_integral<long long int>
+	struct is_integral<long long int> : public true_type
 	{
 	};
 

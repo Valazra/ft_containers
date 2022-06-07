@@ -18,7 +18,7 @@ namespace ft
 			typedef Alloc allocator_type;
 			typedef typename allocator_type::const_pointer const_pointer;
 			typedef typename allocator_type::const_reference const_reference;
-			typedef std::ptrdiff_t difference_type;
+			typedef ptrdiff_t difference_type;
 			typedef typename allocator_type::pointer pointer;
 			typedef typename allocator_type::reference reference;
 			typedef ft::random_access_iterator<value_type> iterator;

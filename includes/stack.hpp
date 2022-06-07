@@ -5,42 +5,20 @@
 
 namespace ft
 {
-//PROTOTYPES FOR FRIENDS
-	template < class T, class Container = vector<T> >
-	class stack;
-
-	template <class T, class Container>
-	bool operator==(const stack<T, Container>& lhs, const stack<T, Container>& rhs);
-
-	template <class T, class Container>
-	bool operator!=(const stack<T, Container>& lhs, const stack<T, Container>& rhs);
-
-	template <class T, class Container>
-	bool operator<(const stack<T, Container>& lhs, const stack<T, Container>& rhs);
-
-	template <class T, class Container>
-	bool operator<=(const stack<T, Container>& lhs, const stack<T, Container>& rhs);
-
-	template <class T, class Container>
-	bool operator>(const stack<T, Container>& lhs, const stack<T, Container>& rhs);
-
-	template <class T, class Container>
-	bool operator>=(const stack<T, Container>& lhs, const stack<T, Container>& rhs);
-
-	template < class T, class Container>
+	template < class T, class Container = ft::vector<T> >
 	class stack
 	{
 		public :
 			typedef T value_type;
 			typedef Container container_type;
-			typedef std::size_t size_type;
+			typedef size_t size_type;
 
 			explicit stack(const container_type& ctnr = container_type())
 			{
 				_c = ctnr;
 			}
-			
-			virtual ~stack(void)
+
+			~stack(void)
 			{
 			}
 
@@ -69,17 +47,27 @@ namespace ft
 				_c.push_back(val);
 			}
 
-			void pop(void)
-			{
+			void pop(void)	{
 				_c.pop_back();
 			}
 
-			friend bool operator== <T, Container>(stack const& lhs, stack const& rhs);
-			friend bool operator!= <T, Container>(stack const& lhs, stack const& rhs);
-			friend bool operator< <T, Container>(stack const& lhs, stack const& rhs);
-			friend bool operator<= <T, Container>(stack const& lhs, stack const& rhs);
-			friend bool operator> <T, Container>(stack const& lhs, stack const& rhs);
-			friend bool operator>= <T, Container>(stack const& lhs, stack const& rhs);
+			template <class T2, class Container2>
+			friend bool operator==(const stack<T2, Container2>& lhs, const stack<T2, Container2>& rhs);
+
+			template <class T2, class Container2>
+			friend bool operator!=(const stack<T2, Container2>& lhs, const stack<T2, Container2>& rhs);
+
+			template <class T2, class Container2>
+			friend bool operator<(const stack<T2, Container2>& lhs, const stack<T2, Container2>& rhs);
+
+			template <class T2, class Container2>
+			friend bool operator<=(const stack<T2, Container2>& lhs, const stack<T2, Container2>& rhs);
+	
+			template <class T2, class Container2>
+			friend bool operator>(const stack<T2, Container2>& lhs, const stack<T2, Container2>& rhs);
+	
+			template <class T2, class Container2>
+			friend bool operator>=(const stack<T2, Container2>& lhs, const stack<T2, Container2>& rhs);
 
 		protected : 
 			container_type _c;

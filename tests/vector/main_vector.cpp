@@ -49,8 +49,15 @@ int	main(void)
 	ft::vector<int>::iterator it = cons1.begin();
 	std::cout << "it = " << *it << std::endl;
 	std::cout << "*++it = " << *++it << std::endl;
-	std::cout << "--+it = " << *--it << std::endl;
+	std::cout << "--it = " << *--it << std::endl;
 	std::cout << "*(it + 2) = " << *(it + 2) << std::endl;
+	std::cout << std::endl << "******************************" << std::endl << std::endl;
+
+	ft::vector<int>::reverse_iterator rit = cons1.rbegin();
+	std::cout << "rit = " << *rit << std::endl;
+	std::cout << "++rit = " << *++rit << std::endl;
+	std::cout << "--rit = " << *--rit << std::endl;
+	std::cout << "(rit + 2) = " << *(rit + 2) << std::endl;
 	std::cout << std::endl << "******************************" << std::endl << std::endl;
 
 	//at

@@ -23,9 +23,9 @@ namespace ft
 			typedef typename allocator_type::reference reference;
 			typedef ft::random_access_iterator<value_type> iterator;
 			typedef ft::random_access_iterator<const value_type> const_iterator;
-			typedef typename ft::reverse_iterator<iterator> reverse_iterator;
+			typedef ft::reverse_iterator<iterator> reverse_iterator;
 			typedef ft::reverse_iterator<const_iterator> const_reverse_iterator;
-			typedef std::size_t size_type;
+			typedef size_t size_type;
 
 			explicit vector(const allocator_type& alloc = allocator_type()) : _size(0), _capacity(0), _array(NULL), _allocator(alloc)
 			{

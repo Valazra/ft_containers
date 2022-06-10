@@ -84,11 +84,11 @@ namespace ft
 		class random_access_iterator : public iterator<ft::random_access_iterator_tag, T>
 	{
 		public : 
-			typedef typename iterator<random_access_iterator_tag, T>::value_type value_type;
-			typedef typename iterator<random_access_iterator_tag, T>::pointer pointer;
-			typedef typename iterator<random_access_iterator_tag, T>::reference reference;
-			typedef typename iterator<random_access_iterator_tag, T>::difference_type difference_type;
-			typedef typename iterator<random_access_iterator_tag, T>::iterator_category iterator_category;
+			typedef typename iterator<ft::random_access_iterator_tag, T>::value_type value_type;
+			typedef typename iterator<ft::random_access_iterator_tag, T>::pointer pointer;
+			typedef typename iterator<ft::random_access_iterator_tag, T>::reference reference;
+			typedef typename iterator<ft::random_access_iterator_tag, T>::difference_type difference_type;
+			typedef typename iterator<ft::random_access_iterator_tag, T>::iterator_category iterator_category;
 
 			random_access_iterator(void)
 			{
@@ -98,7 +98,7 @@ namespace ft
 			{
 			}
 
-			random_access_iterator(const random_access_iterator & src) : _ptr(src._ptr)
+			random_access_iterator(random_access_iterator const &src) : _ptr(src._ptr)
 			{
 			}
 

@@ -4,7 +4,6 @@
 # include <iostream>
 # include "less.hpp"
 # include "red_black_tree.hpp"
-# include "iterator.hpp"
 # include "make_pair.hpp"
 
 namespace ft
@@ -18,38 +17,81 @@ namespace ft
 			typedef T mapped_type;
 			typedef ft::pair<const key_type, mapped_type> value_type;
 			typedef Compare key_compare;
+
+			class value_compare
+			{
+				public :
+					typedef bool result_type;
+					typedef value_type first_argument_type;
+					typedef value_type second_argument_type;
+
+					value_compare(key_compare c = key_compare()) : _comp(c)
+					{
+					}
+
+					bool operator()(const value_type& x, const value_type& y) const
+					{
+						return (_comp(x.first, y.first));
+					}		
+
+				protected :
+					key_compare _comp;
+			};
+
 			typedef Alloc allocator_type;
 			typedef typename allocator_type::const_pointer const_pointer;
 			typedef typename allocator_type::const_reference const_reference;
 		//	typedef ft::iterator_traits<iterator>::difference_type difference_type;
 			typedef typename allocator_type::pointer pointer;
 			typedef typename allocator_type::reference reference;
-		//	typedef ft::tree_type::iterator iterator;
-		//	typedef ft::tree_type::const_iterator const_iterator;
-		//	typedef typename ft::reverse_iterator<iterator> reverse_iterator;
+		//	typedef ft::reverse_iterator<iterator> reverse_iterator;
 		//	typedef ft::reverse_iterator<const_iterator> const_reverse_iterator;
 			typedef size_t size_type;
+			typedef red_black_tree<value_type, value_compare> tree_type;
+			typedef typename tree_type::iterator iterator;
+		//	typedef typename tree_type::const_iterator const_iterator;
 
+			explicit map(const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) : _tree(tree_type(value_compare(comp))), _key_comp(comp), _allocator(alloc)
+			{
+			}
 
-		class value_compare
-		{
-			public :
-				typedef bool result_type;
-				typedef value_type first_argument_type;
-				typedef value_type second_argument_type;
+			///////////// INPUT ITERATOR
 
-				value_compare(key_compare c = key_compare()) : _comp(c)
-				{
-				}
+			map (const map& x)
+			{
+				*this = x;
+			}
 
-				bool operator()(const value_type& x, const value_type& y) const
-				{
-					return (_comp(x.first, y.first));
-				}		
+			~map(void)
+			{
+			}
 
-			protected :
-				key_compare _comp;
-		};
+			map& operator=(const map& x)
+			{
+			//	clear();
+				_key_comp = x._key_comp;
+				_value_comp = x._value_comp;
+				_allocator = x._allocator;
+		//		for (const_iterator it = x.begin() ; it != x.end() ; it++)
+		//			insert(*it);
+				return (*this);
+			}
+
+			mapped_type& operator[](const key_type& k)
+			{
+				return ((*((insert(ft::make_pair(k, mapped_type()))).first)).second);
+			}
+
+			pair<iterator, bool> insert(const value_type& val)
+			{
+				return (_tree.insert(val));
+			}
+
+		private :
+			tree_type _tree;
+			key_compare _key_comp;
+			value_compare _value_comp;
+			allocator_type _allocator;
 	};
 }
 

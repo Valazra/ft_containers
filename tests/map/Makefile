@@ -6,7 +6,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 
 INC_DIR = includes
 
-INCS = map.hpp red_black_tree.hpp node.hpp iterator.hpp pair.hpp make_pair.hpp less.hpp
+INCS = map.hpp red_black_tree.hpp iterator.hpp pair.hpp make_pair.hpp less.hpp
 
 SRCS = main_map.cpp
 

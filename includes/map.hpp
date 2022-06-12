@@ -60,7 +60,12 @@ namespace ft
 			{
 			}
 
-			///////////// INPUT ITERATOR
+			template <class InputIterator>
+			map(InputIterator first, InputIterator last, const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) : _rbt(tree_type(value_compare(comp))), _key(comp), _allocator(alloc)
+			{
+				for ( ; first != last ; first++)
+					insert(*first);
+			}
 
 			map (const map& x)
 			{
@@ -73,18 +78,13 @@ namespace ft
 
 			map& operator=(const map& x)
 			{
-			//	clear();
+				clear();
 				_key = x._key;
 				_value = x._value;
 				_allocator = x._allocator;
-		//		for (const_iterator it = x.begin() ; it != x.end() ; it++)
-		//			insert(*it);
+				for (const_iterator it = x.begin() ; it != x.end() ; it++)
+					insert(*it);
 				return (*this);
-			}
-
-			mapped_type& operator[](const key_type& k)
-			{
-				return ((*((insert(ft::make_pair(k, mapped_type()))).first)).second);
 			}
 
 			iterator begin(void)
@@ -142,6 +142,11 @@ namespace ft
 				return (_rbt.max_size());
 			}
 
+			mapped_type& operator[](const key_type& k)
+			{
+				return ((*((insert(ft::make_pair(k, mapped_type()))).first)).second);
+			}
+
 			pair<iterator, bool> insert(const value_type& val)
 			{
 				return (_rbt.insert(val));
@@ -153,12 +158,24 @@ namespace ft
 				return (_rbt.insert(val).first);
 			}
 
-	/*		template <class InputIterator>
+			template <class InputIterator>
 			void insert(InputIterator first, InputIterator last)
 			{
 				for ( ; first != last ; first++)
 					insert(*first);
-			}*/
+			}
+
+			void erase (iterator position)
+			{
+				_rbt.delete_node(*position);
+			}
+
+			size_type erase (const key_type& k)
+			{
+				if (_rbt.delete_node(value_type(k, mapped_type())))
+					return (1);
+				return (0);
+			}
 
 			void erase(iterator first, iterator last)
 			{
@@ -167,7 +184,7 @@ namespace ft
 				{
 					it = first;
 					first++;
-					_rbt.erase(*it);
+					_rbt.delete_node(*it);
 				}
 			}
 
@@ -264,12 +281,12 @@ namespace ft
 				return (ite);
 			}
 
-			pair<iterator, iterator> equal_range(const key_type& k)
+			pair<const_iterator, const_iterator> equal_range(const key_type& k) const
 			{
 				return (ft::make_pair(lower_bound(k), upper_bound(k)));
 			}
 
-			pair<const_iterator, const_iterator> equal_range(const key_type& k) const
+			pair<iterator, iterator> equal_range(const key_type& k)
 			{
 				return (ft::make_pair(lower_bound(k), upper_bound(k)));
 			}

@@ -38,8 +38,9 @@ namespace ft
 				_allocator = src._allocator;
 				_comp = src._comp;
 				clear();
-		//////////////////////////////////////////////
-		//////////////////////////////////////////////
+				const_iterator it = src.begin();
+				for ( ; it != src.end() ; it++)
+					insert(*it);
 				return (*this);
 			}
 

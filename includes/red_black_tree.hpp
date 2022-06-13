@@ -64,14 +64,14 @@ namespace ft
 			{
 				if (!_root)
 					return (end());
-				return (iterator(miminum(_root)));
+				return (iterator(mininum(_root)));
 			}
 
 			const_iterator begin(void) const
 			{
 				if (!_root)
 					return (end());
-				return (const_iterator(mimum(_root)));
+				return (const_iterator(minimum(_root)));
 			}
 
 			iterator end(void)

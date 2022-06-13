@@ -167,6 +167,7 @@ namespace ft
 				return (_size == 0 ? true : false);
 			}
 
+			//utilisé dans push_back
 			void reserve(size_type n)
 			{
 				if (n <= _capacity)
@@ -193,15 +194,13 @@ namespace ft
 				return (_array[n]);
 			}
 
-//mettre les erreurs comme pour les vrais vectors
 			reference at(size_type n)
 			{
 				if (n < 0 || n >= _size)
-					throw std::out_of_range("Error for 'at' ");
+					throw std::out_of_range("Exception out_of_range for function at ");
 				return (_array[n]);
 			}
 
-//mettre les erreurs comme pour les vrais vectors
 			const_reference at(size_type n) const
 			{
 				if (n < 0 || n >= _size)

@@ -1,4 +1,4 @@
-NAME = stack
+NAME = ft_stack
 
 COMPILER = clang++
 

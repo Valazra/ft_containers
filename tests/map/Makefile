@@ -1,4 +1,4 @@
-NAME = map
+NAME = ft_map
 
 COMPILER = clang++
 
@@ -8,7 +8,7 @@ INC_DIR = includes
 
 INCS = map.hpp red_black_tree.hpp iterator.hpp rbt_iterator.hpp pair.hpp pair.hpp make_pair.hpp less.hpp enable_if.hpp lexicographical_compare.hpp is_integral.hpp
 
-SRCS = main_map.cpp
+SRCS = main_ft_map.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 

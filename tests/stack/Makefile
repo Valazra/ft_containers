@@ -8,7 +8,7 @@ INC_DIR = includes
 
 INCS = stack.hpp
 
-SRCS = main_stack.cpp
+SRCS = main_ft_stack.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 

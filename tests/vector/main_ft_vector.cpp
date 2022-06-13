@@ -80,11 +80,11 @@ int	main(void)
 
 	std::cout << std::endl << "******************************" << std::endl << std::endl;
 
+	std::cout << "-------------MAX_SIZE-RESIZE-------------" << std::endl << std::endl;
 	//max size
 	std::cout << "cons7.max_size() = " << cons7.max_size() << std::endl;
 
 	//resize
-	std::cout << "-------------RESIZE-------------" << std::endl << std::endl;
 	cons7.resize(2);
 	print_datas_vector(cons7);
 	cons7.resize(5, 33);

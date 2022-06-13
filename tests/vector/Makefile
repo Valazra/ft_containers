@@ -1,4 +1,4 @@
-NAME = vector
+NAME = ft_vector
 
 COMPILER = clang++
 
@@ -8,7 +8,7 @@ INC_DIR = includes
 
 INCS = vector.hpp enable_if.hpp is_integral.hpp lexicographical_compare.hpp iterator.hpp
 
-SRCS = main_vector.cpp
+SRCS = main_ft_vector.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 

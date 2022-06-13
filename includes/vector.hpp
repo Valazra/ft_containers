@@ -61,14 +61,9 @@ namespace ft
 				}
 			}
 
-			vector(const vector& x) : _size(x._size), _capacity(x._capacity), _array(NULL), _allocator(x._allocator)
+			vector (const vector& x) : _size(0), _capacity(0), _array(NULL)
 			{
-				if (x._size > 0)
-				{
-					_array = _allocator.allocate(_capacity);
-					for (size_type i = 0, size = x._size ; i < size ; i++)
-						_allocator.construct(_array + i, x._array[i]);
-				}
+				*this = x;
 			}
 
 			~vector(void)
@@ -303,12 +298,15 @@ namespace ft
 			void insert(iterator position, size_type n, const value_type& val)
 			{
 				difference_type tmp = position - _array;
-				if (n == 0)
+				if (n <= 0)
 					return ;
 				if (_size + n > _capacity)
-					reserve(_size * 2);
-				else if (_size + n > _size * 2)
-					reserve(_size + n);
+				{
+					if (_size * 2 > _size + n)
+						reserve(_size * 2);
+					else
+						reserve(_size + n);
+				}
 				for (pointer it = _array + _size + n - 1, ite = _array + tmp + n - 1 ; it != ite ; --it)
 				{
 					_allocator.construct(it, *(it - n));
@@ -390,6 +388,7 @@ namespace ft
 				_array = tmp_arr;
 			}
 
+			//utilisé dans clear
 			void clear(void)
 			{
 				if (empty())

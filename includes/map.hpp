@@ -46,7 +46,7 @@ namespace ft
 			typedef Alloc allocator_type;
 			typedef typename allocator_type::const_pointer const_pointer;
 			typedef typename allocator_type::const_reference const_reference;
-		//	typedef ft::iterator_traits<iterator>::difference_type difference_type;
+			typedef ft::iterator_traits<iterator>::difference_type difference_type;
 			typedef typename allocator_type::pointer pointer;
 			typedef typename allocator_type::reference reference;
 			typedef red_black_tree<value_type, value_compare> tree_type;

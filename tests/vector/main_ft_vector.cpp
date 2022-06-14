@@ -204,29 +204,29 @@ int	main(void)
 	std::cout << "cons2 is : " << std::endl;
 	print_datas_vector(cons2);
 	if (cons1 == cons2)
-		std::cout << "cons2 and cons3 are ==" << std::endl;
+		std::cout << "cons1 and cons2 are ==" << std::endl;
 	else
-		std::cout << "cons2 and cons3 are not ==" << std::endl;
+		std::cout << "cons1 and cons2 are not ==" << std::endl;
 	if (cons1 != cons2)
-		std::cout << "cons2 and cons3 are !=" << std::endl;
+		std::cout << "cons1 and cons2 are !=" << std::endl;
 	else
-		std::cout << "cons2 and cons3 are not !=" << std::endl;
+		std::cout << "cons1 and cons2 are not !=" << std::endl;
 	if (cons1 < cons2)
-		std::cout << "cons2 < cons3" << std::endl;
+		std::cout << "cons1 < cons2" << std::endl;
 	else
-		std::cout << "cons2 is not < cons3" << std::endl;
+		std::cout << "cons1 is not < cons2" << std::endl;
 	if (cons1 <= cons2)
-		std::cout << "cons2 <= cons3" << std::endl;
+		std::cout << "cons1 <= cons2" << std::endl;
 	else
-		std::cout << "cons2 is not <= cons3" << std::endl;
+		std::cout << "cons1 is not <= cons2" << std::endl;
 	if (cons1 > cons2)
-		std::cout << "cons2 > cons3" << std::endl;
+		std::cout << "cons1 > cons2" << std::endl;
 	else
-		std::cout << "cons2 is not > cons3" << std::endl;
+		std::cout << "cons1 is not > cons2" << std::endl;
 	if (cons1 >= cons2)
-		std::cout << "cons2 >= cons3" << std::endl;
+		std::cout << "cons1 >= cons2" << std::endl;
 	else
-		std::cout << "cons2 is not >= cons3" << std::endl;
+		std::cout << "cons1 is not >= cons2" << std::endl;
 
 	std::cout << std::endl << "***************************" << std::endl << std::endl;
 	return (0);

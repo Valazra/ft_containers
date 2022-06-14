@@ -182,7 +182,7 @@ namespace ft
 			{
 			}
 
-			const_rbt_iterator(rbt_iterator<T> const &src) : _ptr(src._ptr)
+			const_rbt_iterator(rbt_iterator<T> const &src) : _ptr(src.base())
 			{
 			}
 

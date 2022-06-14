@@ -292,6 +292,7 @@ namespace ft
 				clear_helper(curr->_right);
 				free_node(curr);
 				_size--;
+				curr = NULL;
 			}
 
 			void free_node(node_ptr node)

@@ -147,8 +147,11 @@ namespace ft
 			void resize(size_type n, value_type val = value_type())
 			{
 				if (n < _size)
-					_size = n;
-				else
+				{
+					while (n < _size)
+						pop_back();
+				}
+				else if (n > _size)
 					insert(end(), n - _size, val);
 			}
 
@@ -165,18 +168,23 @@ namespace ft
 			//utilisé dans push_back
 			void reserve(size_type n)
 			{
-				if (n <= _capacity)
-					return ;
-				pointer ptr_new = _allocator.allocate(n);
-				for (size_type i = 0 ; i < _size ; i++)
+				if (n > max_size())
+					throw std::length_error("vector::reserve");
+				if (n >= _capacity && n > 0)
 				{
-					_allocator.construct(ptr_new + i, _array[i]);
-					_allocator.destroy(_array + i);
+					pointer new_ptr = _allocator.allocate(n);
+					if (_capacity > 0)
+					{
+						for (size_t i = 0 ; i < _size ; i++)
+						{
+							_allocator.construct(new_ptr + i, _array[i]);
+							_allocator.destroy(&_array[i]);
+						}
+						_allocator.deallocate(_array, _capacity);
+					}
+					_array = new_ptr;
+					_capacity = n;
 				}
-				if (_capacity != 0)
-					_allocator.deallocate(_array, _capacity);
-				_capacity = n;
-				_array = ptr_new;
 			}
 
 			reference operator[](size_type n)
@@ -388,12 +396,11 @@ namespace ft
 				_array = tmp_arr;
 			}
 
-			//utilisé dans clear
 			void clear(void)
 			{
 				if (empty())
 					return ;
-				for (size_type i = 0, size = _size ; i < size ; i++)
+				for (size_type i = 0 ; i < _size ; i++)
 					_allocator.destroy(_array + i);
 				_size = 0;
 			}

@@ -64,7 +64,7 @@ namespace ft
 			{
 				if (!_root)
 					return (end());
-				return (iterator(mininum(_root)));
+				return (iterator(minimum(_root)));
 			}
 
 			const_iterator begin(void) const

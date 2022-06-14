@@ -46,14 +46,14 @@ namespace ft
 			typedef Alloc allocator_type;
 			typedef typename allocator_type::const_pointer const_pointer;
 			typedef typename allocator_type::const_reference const_reference;
-			typedef ft::iterator_traits<iterator>::difference_type difference_type;
 			typedef typename allocator_type::pointer pointer;
 			typedef typename allocator_type::reference reference;
-			typedef red_black_tree<value_type, value_compare> tree_type;
+			typedef typename ft::red_black_tree<value_type, value_compare> tree_type;
 			typedef typename tree_type::iterator iterator;
 			typedef typename tree_type::const_iterator const_iterator;
-			typedef ft::reverse_iterator<iterator> reverse_iterator;
-			typedef ft::reverse_iterator<const_iterator> const_reverse_iterator;
+			typedef typename ft::reverse_iterator<iterator> reverse_iterator;
+			typedef typename ft::reverse_iterator<const_iterator> const_reverse_iterator;
+			typedef typename ft::iterator_traits<iterator>::difference_type difference_type;
 			typedef size_t size_type;
 
 			explicit map(const key_compare& comp = key_compare(), const allocator_type& alloc = allocator_type()) : _rbt(tree_type(value_compare(comp))), _key(comp), _allocator(alloc)

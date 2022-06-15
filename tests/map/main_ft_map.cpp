@@ -12,7 +12,7 @@ void print_datas_map(ft::map<Key, T> & map)
 
 int main(void)
 {
-	std::cout << "***********************************" << std::endl << std::endl;
+/*	std::cout << "***********************************" << std::endl << std::endl;
 	std::cout << "-------------RBT-------------" << std::endl << std::endl;
 	ft::red_black_tree<int> rbt;
 
@@ -51,7 +51,7 @@ int main(void)
 		std::cout << *it << std::endl;
 		it++;
 	}
-
+*/
 	std::cout << std::endl << "**********************************" << std::endl << std::endl;
 	std::cout << "-------------MAP-CONSTRUCTORS-------------" << std::endl << std::endl;
 

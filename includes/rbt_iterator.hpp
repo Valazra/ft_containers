@@ -2,7 +2,6 @@
 # define RBT_ITERATOR_HPP
 
 # include "iterator.hpp"
-# include "red_black_tree.hpp"
 
 namespace ft
 {
@@ -47,6 +46,7 @@ namespace ft
 			typedef typename iterator<ft::bidirectional_iterator_tag, Node<T> >::pointer node_ptr;
 			typedef typename iterator<ft::bidirectional_iterator_tag, T>::reference reference;
 			typedef typename iterator<ft::bidirectional_iterator_tag, T>::pointer pointer;
+			typedef typename iterator<ft::bidirectional_iterator_tag, Node<T> >::difference_type difference_type;
 			typedef typename iterator<ft::bidirectional_iterator_tag, Node<T> >::iterator_category iterator_category;
 
 			rbt_iterator(void) : _ptr(NULL)
@@ -166,11 +166,11 @@ namespace ft
 	{
 		public :
 			typedef const_rbt_iterator iterator_type;
-			typedef typename iterator<ft::bidirectional_iterator_tag, T>::value_type value_type;
+			typedef T value_type;
 			typedef typename iterator<ft::bidirectional_iterator_tag, Node<T> >::reference node_reference;
 			typedef typename iterator<ft::bidirectional_iterator_tag, Node<T> >::pointer node_ptr;
-			typedef typename iterator<ft::bidirectional_iterator_tag, T>::reference reference;
-			typedef typename iterator<ft::bidirectional_iterator_tag, T>::pointer pointer;
+			typedef const T &reference;
+			typedef const T *pointer;
 			typedef typename iterator<ft::bidirectional_iterator_tag, Node<T> >::difference_type difference_type;
 			typedef typename iterator<ft::bidirectional_iterator_tag, Node<T> >::iterator_category iterator_category;
 

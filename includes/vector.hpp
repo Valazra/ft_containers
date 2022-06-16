@@ -42,7 +42,7 @@ namespace ft
 			}
 	
 		template <class InputIterator>
-			vector(InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type(), typename ft::enable_if<!ft::is_integral<InputIterator>::value, bool>::type = 0) : _size(0), _capacity(0), _array(NULL),  _allocator(alloc)
+			vector(InputIterator first, typename ft::enable_if<!ft::is_integral<InputIterator>::value, InputIterator>::type last, const allocator_type& alloc = allocator_type()) : _size(0), _capacity(0), _array(NULL),  _allocator(alloc)
 			{
 				size_type size = 0;
 				for (InputIterator it = first ; it != last ; it++)

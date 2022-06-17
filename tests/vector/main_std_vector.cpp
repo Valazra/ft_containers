@@ -44,44 +44,18 @@ int	main(void)
 	std::vector<int> cons6 = std::vector<int>(cons3.begin(), cons3.end());
 	print_datas_vector(cons6);
 
-	//begin et end
+	std::cout << std::endl << "******************************" << std::endl << std::endl;
+
+	std::cout << "-------------MAX_SIZE-RESIZE-------------" << std::endl << std::endl;
+
+	//max size
 	std::vector<int> cons7;
-	std::vector<int>::iterator it2;
-	std::vector<int>::iterator it3;
 	cons7.push_back(1);
 	cons7.push_back(2);
 	cons7.push_back(3);
 	cons7.push_back(4);
 	print_datas_vector(cons7);
-	it2 = cons7.begin();
-	it3 = cons7.end();
-	std::cout << "cons7.begin() = " << *it2 << " et cons7.end() = " << *it3 << std::endl;
 
-	//const_iterator begin et end
-	std::vector<int>::const_iterator it4;
-	std::vector<int>::const_iterator it5;
-	it4 = cons7.begin();
-	it5 = cons7.end();
-	std::cout << "const cons7.begin() = " << *it4 << " et const cons7.end() = " << *it5 << std::endl;
-
-	//rbegin et rend
-	std::vector<int>::reverse_iterator it6;
-	std::vector<int>::reverse_iterator it7;
-	it6 = cons7.rbegin();
-	it7 = cons7.rend();
-	std::cout << "reverse cons7.rbegin() = " << *it6 << " et reverse cons7.rend() = " << *it7 << std::endl;
-
-	//const rbegin et rend
-	std::vector<int>::const_reverse_iterator it8;
-	std::vector<int>::const_reverse_iterator it9;
-	it8 = cons7.rbegin();
-	it9 = cons7.rend();
-	std::cout << "const_reverse cons8.rbegin() = " << *it8 << " et const_reverse cons7.rend() = " << *it9 << std::endl;
-
-	std::cout << std::endl << "******************************" << std::endl << std::endl;
-
-	std::cout << "-------------MAX_SIZE-RESIZE-------------" << std::endl << std::endl;
-	//max size
 	std::cout << "cons7.max_size() = " << cons7.max_size() << std::endl;
 
 	//resize

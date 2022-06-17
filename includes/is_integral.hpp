@@ -9,7 +9,7 @@ namespace ft
 		static const T value = v;
 		typedef T value_type;
 		typedef integral_constant<T, v> type;
-		const operator T()
+		operator T()
 		{
 			return (v);
 		}

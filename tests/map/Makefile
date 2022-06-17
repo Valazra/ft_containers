@@ -1,6 +1,6 @@
 NAME = ft_map
 
-COMPILER = clang++
+COMPILER = c++
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 

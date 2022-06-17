@@ -165,7 +165,6 @@ namespace ft
 				return (_size == 0 ? true : false);
 			}
 
-			//utilisé dans push_back
 			void reserve(size_type n)
 			{
 				if (n > max_size())
@@ -282,12 +281,14 @@ namespace ft
 	
 			void push_back(const value_type& val)
 			{
-				if (_capacity == 0)
-					reserve(1);
-				else if (_capacity == _size)
-					reserve(_capacity * 2);
-				_allocator.construct(_array + _size, val);
-				_size++;
+				if (_size >= _capacity)
+				{
+					if (_capacity <= 0)	
+						reserve(1);
+					else
+						reserve(_capacity *= 2);
+				}
+				_allocator.construct(&_array[_size++], val);
 			}
 
 			void pop_back(void)
